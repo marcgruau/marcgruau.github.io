@@ -22,6 +22,7 @@ const SITE = {
 
 const works = JSON.parse(readFileSync('data/works.json', 'utf8'));
 const archive = JSON.parse(readFileSync('data/archive.json', 'utf8'));
+const V = Date.now().toString(36); // cache-buster so phones pick up new CSS/JS right away
 const BASE = process.env.BASE_PATH || '/'; // only used by 404.html, which is served at any depth
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 
@@ -60,7 +61,7 @@ ${noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonical" hr
 <link rel="icon" href="${root}favicon.svg" type="image/svg+xml">
 <link rel="preload" href="${root}fonts/NeueMontreal-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${root}fonts/NeueMontreal-Medium.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="${root}style.css">
+<link rel="stylesheet" href="${root}style.css?v=${V}">
 <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
@@ -84,7 +85,7 @@ ${body(root)}
   <time class="footer__clock" data-clock aria-hidden="true"></time>
 </footer>
 <script src="${root}vendor/lenis.min.js" defer></script>
-${physics ? `<script src="${root}vendor/matter.min.js" defer></script>\n` : ''}${viewer ? `<script type="module" src="${root}vendor/model-viewer.min.js"></script>\n` : ''}<script src="${root}main.js" defer></script>
+${physics ? `<script src="${root}vendor/matter.min.js" defer></script>\n` : ''}${viewer ? `<script type="module" src="${root}vendor/model-viewer.min.js"></script>\n` : ''}<script src="${root}main.js?v=${V}" defer></script>
 </body>
 </html>
 `;
