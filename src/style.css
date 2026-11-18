@@ -350,6 +350,29 @@ a { color: inherit; text-decoration: none; }
   .reveal { opacity: 1; transform: none; }
 }
 
+/* Interaction hints: a small blinking-dot chip that says what you can do, and goes away once you have done it */
+.hint { position: absolute; z-index: 3; display: inline-flex; align-items: center; gap: 10px; font: 400 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; color: var(--fg); background: color-mix(in srgb, var(--bg) 78%, transparent); border: 1px solid color-mix(in srgb, var(--fg) 45%, transparent); padding: 9px 13px; pointer-events: none; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: opacity .5s ease, transform .5s ease; }
+.hint > i { width: 8px; height: 8px; background: var(--accent); flex: none; }
+.hint.is-used { opacity: 0; transform: translateY(6px); }
+.hint--hero { right: var(--pad); bottom: 14px; z-index: -1; font-size: 13px; padding: 11px 15px; } /* behind the tags: they float over it */
+.hero__tags { isolation: isolate; }
+.hint__touch { display: none; }
+.hint--card { left: 14px; bottom: 14px; opacity: 0; transform: translateY(8px); }
+.card__media { position: relative; }
+@media (hover: hover) { .card:hover .hint--card { opacity: 1; transform: none; } }
+@media (hover: none) { .hint__mouse { display: none; } .hint__touch { display: inline; } .hint--card { display: none; } }
+.fcx .hint--fc { left: 24px; bottom: 24px; font: 500 13px/1 var(--font-mono); letter-spacing: .1em; color: #f1efea; background: rgba(5, 6, 8, .72); border-color: rgba(241, 239, 234, .55); padding: 12px 16px; gap: 12px; }
+.fcx .hint--fc > i { background: #ec1812; }
+.fcx .hint--fc svg { width: 18px; height: 18px; flex: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .hint > i { animation: hint-dot 1.2s steps(1, end) infinite; }
+  .fcx .hint--fc svg { animation: hint-turn 2.4s cubic-bezier(.6, 0, .4, 1) infinite; }
+  .hint:not(.is-used):not(.hint--card) { animation: hint-in .6s ease-out 1.4s both; }
+}
+@keyframes hint-dot { 0%, 55% { opacity: 1; } 56%, 100% { opacity: .15; } }
+@keyframes hint-turn { 0%, 15% { transform: rotate(0); } 60%, 100% { transform: rotate(360deg); } }
+@keyframes hint-in { from { opacity: 0; transform: translateY(8px); } }
+
 /* Touch screens: a tap leaves :hover stuck, so the hover moves are for real pointers only */
 @media (hover: none) {
   .card:hover { transform: none; background-color: transparent; box-shadow: none; }

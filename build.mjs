@@ -92,7 +92,7 @@ ${physics ? `<script src="${root}vendor/matter.min.js" defer></script>\n` : ''}$
 }
 
 const card = (root, w, eager = false, h = 'h3') => `<a class="card" href="${root}${w.slug}/">
-  <div class="card__media"><div class="card__art">${picture(root, { ...w.thumb, alt: '' }, { lazy: !eager, sizes: '(min-width: 800px) 50vw, 100vw' })}${w.slug === 'fast-concept' ? '<i class="card__led" aria-hidden="true"></i>' : ''}</div></div>
+  <div class="card__media"><div class="card__art">${picture(root, { ...w.thumb, alt: '' }, { lazy: !eager, sizes: '(min-width: 800px) 50vw, 100vw' })}${w.slug === 'fast-concept' ? '<i class="card__led" aria-hidden="true"></i>' : ''}</div><span class="hint hint--card" aria-hidden="true"><i></i>VIEW PROJECT →</span></div>
   <div class="card__row"><${h}>${esc(w.title)}</${h}><span>${esc(w.year)}</span></div>
   <p class="card__cat">${esc(w.category)}</p>
 </a>`;
@@ -150,6 +150,7 @@ const home = (root) => `<section class="hero">
     ${tags.map((t, i) => `<div class="phys p-${i + 1}"><span class="tag${i % 2 ? ' tag--r' : ''}">${t}${i === 0 ? '<i></i>' : ''}</span></div>`).join('\n    ')}
     <div class="phys p-o1"><a class="orb orb--arrow" href="#works" draggable="false" aria-label="Scroll to selected works"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15M5.5 12.5 12 19l6.5-6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div>
     <div class="phys p-o2"><span class="orb orb--star" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></span></div>
+    <div class="hint hint--hero" data-hint aria-hidden="true"><i></i><span class="hint__mouse">MOVE YOUR CURSOR — PUSH THE TAGS</span><span class="hint__touch">TOUCH THE TAGS</span></div>
   </div>
   <h1 class="hero__name">MARC GRUAU</h1>
   <div class="hero__intro">

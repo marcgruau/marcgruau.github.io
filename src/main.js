@@ -99,7 +99,9 @@ safe(() => {
   const box = document.querySelector('[data-physics]');
   const M = window.Matter;
   if (!box || !M || reduce) return;
-  const els = [...box.children];
+  const els = [...box.querySelectorAll('.phys')];
+  const hint = box.querySelector('[data-hint]');
+  let pushed = 0;
   const MOUSE = { radius: 120, strength: 0.02 };
   let engine, bodies = [], visible = true;
   const pointer = { x: 0, y: 0, active: false };
@@ -133,6 +135,7 @@ safe(() => {
         if (d > 0 && d < MOUSE.radius) {
           const f = (MOUSE.strength * (1 - d / MOUSE.radius)) / d;
           M.Body.applyForce(b, b.position, { x: dx * f, y: dy * f });
+          if (hint && ++pushed === 25) hint.classList.add('is-used'); // they have got the idea
         }
       }
     }
@@ -186,4 +189,16 @@ safe(() => {
   addEventListener('scroll', load, { passive: true });
   const timer = setInterval(load, 700);
   load();
+});
+
+// Interaction hints on 3D viewers: hide once the visitor has grabbed the model
+safe(() => {
+  document.querySelectorAll('[data-hint-scope]').forEach((scope) => {
+    const hint = scope.querySelector('[data-hint]');
+    const target = scope.querySelector('model-viewer');
+    if (!hint || !target) return;
+    const used = () => hint.classList.add('is-used');
+    target.addEventListener('pointerdown', used, { once: true });
+    target.addEventListener('keydown', used, { once: true });
+  });
 });
