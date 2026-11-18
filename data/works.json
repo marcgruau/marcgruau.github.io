@@ -1,0 +1,368 @@
+[
+ {
+  "slug": "fast-concept",
+  "title": "FAST CONCEPT",
+  "category": "BRANDING & VISUAL IDENTITY",
+  "year": "2026",
+  "overview": "Self-initiated record label in development — full visual identity built alongside the music.",
+  "description": "",
+  "services": "Brand identity, logo system, cover art, audio production",
+  "role": "Founder, design & production",
+  "thumb": {
+   "src": "img/rLxaVAH4Gf7gNpDRs5EZopEBzY8.webp",
+   "w": 1600,
+   "h": 675,
+   "alt": "Fast Concept record label studio"
+  },
+  "images": [
+   {
+    "src": "img/LQ8QNOYUHnbHVwuqvqKoBNu1EMw.webp",
+    "w": 1600,
+    "h": 1067,
+    "alt": "Fast Concept record label studio"
+   },
+   {
+    "src": "img/o3Hg1LbZmtaNVJBSmNm3jgbAUKg.webp",
+    "w": 1600,
+    "h": 1067,
+    "alt": "Fast Concept record label studio"
+   },
+   {
+    "src": "img/HbU2J300ouiD9nnfltrNrgW7YY.webp",
+    "w": 1600,
+    "h": 1067,
+    "alt": "Fast Concept record label studio"
+   }
+  ],
+  "featured": true,
+  "featuredOrder": 2
+ },
+ {
+  "slug": "motion-animated-art",
+  "title": "MOTION & ANIMATED ART",
+  "category": "MOTION & COVER DESIGN",
+  "year": "2025",
+  "overview": "Original motion pieces and animated art — After Effects and Blender, scored with my own audio.",
+  "description": "",
+  "services": "Motion design, 3D, sound design",
+  "role": "Direction, animation & sound",
+  "thumb": {
+   "src": "img/fldSFNPk6C3wPh7pwHQu6XoxK9g.webp",
+   "w": 1600,
+   "h": 900,
+   "alt": "Motion and animated art render"
+  },
+  "images": [
+   {
+    "src": "img/wZ84HhwYdETyKv9PvJYv72AYzQs.webp",
+    "w": 1600,
+    "h": 900,
+    "alt": "Motion and animated art render"
+   },
+   {
+    "src": "img/VZFPJAhnyUmDj2Vv5DziUzUqKcQ.webp",
+    "w": 1600,
+    "h": 900,
+    "alt": "Motion and animated art render"
+   },
+   {
+    "src": "img/X0lzZZvgnCvxXJWenLPzfxvTGU.webp",
+    "w": 1600,
+    "h": 900,
+    "alt": "Motion and animated art render"
+   }
+  ],
+  "featured": true,
+  "featuredOrder": 3
+ },
+ {
+  "slug": "album-covers",
+  "title": "ALBUM COVERS",
+  "category": "MOTION & COVER DESIGN",
+  "year": "2025",
+  "overview": "Cover artwork for personal releases and independent artists, produced alongside the music itself.",
+  "description": "",
+  "services": "Cover art, visual identity, audio production",
+  "role": "Design & music production",
+  "thumb": {
+   "src": "img/y8Mt8l6bM9RHhgmzbW2J0LCsSs.webp",
+   "w": 4170,
+   "h": 2470,
+   "alt": "A black and white image of a handrawn logo"
+  },
+  "images": [
+   {
+    "src": "img/MJin5EUEvey76oyNTR33DVOzsp4.webp",
+    "w": 2160,
+    "h": 1536,
+    "alt": "Image of a Gray to white soft gradient"
+   },
+   {
+    "src": "img/YrfW9OwDUWHiCsIdVzI5825hwA.webp",
+    "w": 2160,
+    "h": 1536,
+    "alt": "Image of a Laptop on top of an eletronic device"
+   },
+   {
+    "src": "img/AFUJAk8w2OFDqWJNXlTrtWd5A0g.webp",
+    "w": 2160,
+    "h": 1536,
+    "alt": "Image of two smartphones with a gray background"
+   },
+   {
+    "src": "img/UgzWq32LDOpseYWXsusT4yy5pk.webp",
+    "w": 1240,
+    "h": 1860,
+    "alt": ""
+   },
+   {
+    "src": "img/B6nPSRjM2fYAHkz7LNJ3MB5Dpus.webp",
+    "w": 2160,
+    "h": 1536,
+    "alt": ""
+   }
+  ],
+  "featured": false,
+  "featuredOrder": 0
+ },
+ {
+  "slug": "macon-lesquoy",
+  "title": "MACON & LESQUOY",
+  "category": "CRM & LIFECYCLE DESIGN",
+  "year": "2024",
+  "overview": "Lifecycle email design for the French embroidery and accessories house.",
+  "description": "",
+  "services": "Email design, product storytelling, campaign assets",
+  "role": "Design & CRM content",
+  "thumb": {
+   "src": "img/jwhRl0QRORJiQOyzyuGsfOZm3c.webp",
+   "w": 1600,
+   "h": 1067,
+   "alt": "Macon & Lesquoy embroidery and textile accessories"
+  },
+  "images": [
+   {
+    "src": "img/MyM8glkVbyazXH86OrQiQBCgx4.webp",
+    "w": 1600,
+    "h": 897,
+    "alt": "Macon & Lesquoy embroidery and textile accessories"
+   },
+   {
+    "src": "img/8yg9LwpJwv2C1q55cKiWfL7h0uQ.webp",
+    "w": 1600,
+    "h": 1067,
+    "alt": "Macon & Lesquoy embroidery and textile accessories"
+   },
+   {
+    "src": "img/P8wzZQr2ki1s6rqAywkRU5lY.webp",
+    "w": 1600,
+    "h": 1068,
+    "alt": "Macon & Lesquoy embroidery and textile accessories"
+   }
+  ],
+  "featured": false,
+  "featuredOrder": 0
+ },
+ {
+  "slug": "parfums-m-micallef",
+  "title": "PARFUMS M. MICALLEF",
+  "category": "CRM & LIFECYCLE DESIGN",
+  "year": "2024",
+  "overview": "CRM and lifecycle design for the niche fragrance maison, translating luxury codes into email.",
+  "description": "",
+  "services": "Email design, luxury visual language, lifecycle flows",
+  "role": "Design & CRM content",
+  "thumb": {
+   "src": "img/K3VfuOVBoZ7OKZYqEr8jDgTzm4.webp",
+   "w": 1600,
+   "h": 900,
+   "alt": "Parfums M. Micallef luxury fragrance"
+  },
+  "images": [
+   {
+    "src": "img/XL7kfk2lwdr6aXJxutLC8BQs8.webp",
+    "w": 1600,
+    "h": 1067,
+    "alt": "Parfums M. Micallef luxury fragrance"
+   },
+   {
+    "src": "img/EnrhbtPNZqg6Y870Gp8raelPQ.webp",
+    "w": 1600,
+    "h": 1067,
+    "alt": "Parfums M. Micallef luxury fragrance"
+   },
+   {
+    "src": "img/sVFFz1O6tcHjlVGuEefHj17ovvU.webp",
+    "w": 1600,
+    "h": 1067,
+    "alt": "Parfums M. Micallef luxury fragrance"
+   }
+  ],
+  "featured": false,
+  "featuredOrder": 0
+ },
+ {
+  "slug": "satellite-paris",
+  "title": "SATELLITE PARIS",
+  "category": "CRM & LIFECYCLE DESIGN",
+  "year": "2024",
+  "overview": "Email design system and lifecycle campaigns for the Parisian fashion brand.",
+  "description": "<p>For a Parisian house defined by craftsmanship, every digital touchpoint must feel like a piece of jewelry. I architected a complete visual ecosystem—from high-fidelity newsletters to strategic abandoned cart and post-purchase sequences.</p><p>The objective was to translate the boutique's elegance into a high-performing digital journey. By redesigning the brand’s newsletters, web banners, and on-site pop-ups, I established a cohesive visual language that prioritizes both brand equity and performance. This artistic overhaul directly resulted in a <strong>12% increase in revenue</strong>, proving that sophisticated design is a powerful driver for luxury growth.</p>",
+  "services": "Email design, lifecycle campaigns, visual system",
+  "role": "Design & CRM content",
+  "thumb": {
+   "src": "img/TIZf0ZX95rdSJ6sAvLFaZ9WMxhA.webp",
+   "w": 1920,
+   "h": 1080,
+   "alt": "UI minimalistic widgets"
+  },
+  "images": [
+   {
+    "src": "img/VfbxqCesXQ89rQbpkKoli05rAcQ.webp",
+    "w": 4000,
+    "h": 3000,
+    "alt": "An image of a smartphone on top of an eletronic surface"
+   },
+   {
+    "src": "img/2nodbw3AkMqD38mZDDsUfdrh68.webp",
+    "w": 4000,
+    "h": 2700,
+    "alt": "image of a smartphone leaning on top of a record player"
+   },
+   {
+    "src": "img/VfbxqCesXQ89rQbpkKoli05rAcQ.webp",
+    "w": 4000,
+    "h": 3000,
+    "alt": "UI minimalistic widgets"
+   }
+  ],
+  "featured": true,
+  "featuredOrder": 1
+ },
+ {
+  "slug": "frivilin",
+  "title": "FRIVILIN",
+  "category": "CRM & LIFECYCLE DESIGN",
+  "year": "2024",
+  "overview": "Lifecycle email programme and personalised campaign templates.",
+  "description": "",
+  "services": "Email templates, segmentation design, campaign assets",
+  "role": "Design & CRM content",
+  "thumb": {
+   "src": "img/NhvP8fS9Bd47LSAWDVCOT3xiw.webp",
+   "w": 2880,
+   "h": 2048,
+   "alt": "UI minimalistic widgets"
+  },
+  "images": [
+   {
+    "src": "img/Ad0XwCrH3UtZjAPwz3YczDwhKI.webp",
+    "w": 3752,
+    "h": 2160,
+    "alt": "An image of a smartphone on top of an eletronic surface"
+   },
+   {
+    "src": "img/cVqKOgtjwAnHqw4VZpEo1h1rB4.webp",
+    "w": 3840,
+    "h": 2160,
+    "alt": "image of a smartphone leaning on top of a record player"
+   },
+   {
+    "src": "img/mi7ZA81JHDM7JCGMzzE161hbE.webp",
+    "w": 2880,
+    "h": 2048,
+    "alt": "UI minimalistic widgets"
+   }
+  ],
+  "featured": true,
+  "featuredOrder": 4
+ },
+ {
+  "slug": "fun-cup-racing",
+  "title": "FUN CUP RACING",
+  "category": "BRANDING & VISUAL IDENTITY",
+  "year": "2023",
+  "overview": "Livery design for a Fun Cup race car — vinyl wrap I designed and then raced.",
+  "description": "",
+  "services": "Livery design, vinyl wrap, motorsport branding",
+  "role": "Design & driver",
+  "thumb": {
+   "src": "img/5zKyBHe2VrOPQVna8mfXwyTlPs.webp",
+   "w": 1600,
+   "h": 900,
+   "alt": "Fun Cup racing livery"
+  },
+  "images": [
+   {
+    "src": "img/5j7TzCgEcwVv9LiKLUjjharn4es.webp",
+    "w": 1600,
+    "h": 1066,
+    "alt": "Fun Cup racing livery"
+   },
+   {
+    "src": "img/1OgX1fcqR3WlpijjmdzA3sz9SE.webp",
+    "w": 1600,
+    "h": 1067,
+    "alt": "Fun Cup racing livery"
+   },
+   {
+    "src": "img/OOU6AftPtnli6Ab7pv8TAUpu4.webp",
+    "w": 1600,
+    "h": 897,
+    "alt": "Fun Cup racing livery"
+   }
+  ],
+  "featured": false,
+  "featuredOrder": 0
+ },
+ {
+  "slug": "e-leclerc-beer-festival",
+  "title": "E.LECLERC BEER FESTIVAL",
+  "category": "BRANDING & VISUAL IDENTITY",
+  "year": "2022",
+  "overview": "Festival identity for E.Leclerc, rolled out across street banners and signage in Pamplona.",
+  "description": "",
+  "services": "Identity, large-format print, in-store and street signage",
+  "role": "Art direction & design",
+  "thumb": {
+   "src": "img/1lKgMSMncdtxxIdtfOz62GUU8.webp",
+   "w": 4243,
+   "h": 4170,
+   "alt": "A laptop with a h32 word on it."
+  },
+  "images": [
+   {
+    "src": "img/4oUHahz5PGc5KIDpj5COgHTs16A.webp",
+    "w": 2880,
+    "h": 2048,
+    "alt": "Image of 3 pixelated flat icons"
+   },
+   {
+    "src": "img/fNao0NwVxKOIkaq7bHLgD1iQ.webp",
+    "w": 2880,
+    "h": 2048,
+    "alt": "Image of multiple pixelated flat icons"
+   },
+   {
+    "src": "img/KaGLSpcvl2xtTrpJHdqeVljcL4.webp",
+    "w": 2880,
+    "h": 2048,
+    "alt": "The word \"H23\" pixelated"
+   },
+   {
+    "src": "img/cvgy0uni07SJPMVFmBTWHIVG01s.webp",
+    "w": 2880,
+    "h": 2048,
+    "alt": ""
+   },
+   {
+    "src": "img/R0FxCbdS7santdkEDGaDOdNRbUw.webp",
+    "w": 1920,
+    "h": 1080,
+    "alt": ""
+   }
+  ],
+  "featured": false,
+  "featuredOrder": 0
+ }
+]
