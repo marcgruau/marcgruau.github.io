@@ -275,92 +275,28 @@ const aboutPage = (root) => `<section class="about">
 </section>`;
 
 /* ---------- Fast Concept case study ---------- */
-const fcBoard = (root, file, w, h, alt, cls = '') =>
-  `<a class="fc__board${cls ? ' ' + cls : ''}" href="${root}img/fc/${file}.webp" target="_blank" rel="noopener" aria-label="Open full size: ${esc(alt)}"><img src="${root}img/fc/${file}.webp" width="${w}" height="${h}" alt="${esc(alt)}" loading="lazy" decoding="async"></a>`;
-const fcColours = [
-  ['Bunker Black', '#050608', 'Ground'],
-  ['Panel Dark', '#161722', 'Panels'],
-  ['Annotation Grey', '#8A8B90', 'Annotation'],
-  ['Paper', '#F1EFEA', 'Type and mark'],
-  ['Nucleus Red', '#EC1812', 'Core only'],
-];
+// The body is Marc's own Claude Design page ("Brand Kit Behance"), pre-rendered to static HTML
+// in data/fast-concept-design.html. It is a fixed 1400px layout, scaled to the viewport.
+const fcDesign = readFileSync('data/fast-concept-design.html', 'utf8');
 const fastConceptPage = (w, i) => (root) => {
   const prev = works[(i - 1 + works.length) % works.length];
   const next = works[(i + 1) % works.length];
-  const label = (n, t, r = '') => `<header class="fc__label"><span>${n} / ${t}</span>${r ? `<span>${r}</span>` : ''}</header>`;
   return `<article class="project fc">
   <header class="project__head">
     <h1 aria-label="${esc(w.title)}">${w.title.split(' ').map((word, n) => `<span class="rise" aria-hidden="true"><span style="--i:${n}">${esc(word)}</span></span>`).join(' ')}</h1>
     <div class="project__intro"><p class="eyebrow muted">OVERVIEW</p><p class="project__overview">${esc(w.overview)}</p></div>
   </header>
-  <div class="project__hero fc__cover"><img src="${root}img/fc/01-cover.webp" width="2200" height="1641" alt="Fast Concept — visual identity 2026. Emblem with red core above the Fast Concept wordmark. Independent electronic label, Barcelona." fetchpriority="high"></div>
   <dl class="project__meta">
     <div><dt>YEAR</dt><dd>${esc(w.year)}</dd></div>
     <div><dt>ROLE</dt><dd>${esc(w.role)}</dd></div>
     <div><dt>SERVICES</dt><dd>${esc(w.services)}</dd></div>
   </dl>
-
-  <ul class="fc__facts" data-enter="up">
-    <li><b>6</b><span>flat facets</span></li>
-    <li><b class="fc-red">1</b><span>fixed red core</span></li>
-    <li><b>6</b><span>permitted logo forms</span></li>
-    <li><b>5</b><span>colours</span></li>
-    <li><b>3</b><span>typefaces</span></li>
-  </ul>
-
-  <section class="fc__section">
-    ${label('01', 'THE LABEL', 'INDEPENDENT ELECTRONIC LABEL')}
-    <h2 class="fc__headline"><img src="${root}img/fc/headline.webp" width="2200" height="560" alt="The space between sound and structure." loading="lazy" decoding="async"></h2>
-    <div class="fc__cols" data-enter="up">
-      <p>Founded by Marc Gruau, FAST CONCEPT is an independent underground electronic music label operating at the convergence of high-octane club culture, brutalist architecture, and automotive design.</p>
-      <p>The identity treats the label as a structure rather than a logo: a fixed grid, a measured mark, and a typographic system that behaves like an engineering spec. Every release, poster and sleeve is cut from the same construction.</p>
-      <p class="fc-dim">Six flat facets, one fixed red core. The red is the nucleus and only the nucleus — never in type, never in fields, never inside a letterform. Everything else is black, paper and one grey for annotation.</p>
+  <div class="fcx-wrap" data-fcx>
+    <div class="fcx">
+${fcDesign.replaceAll('{{ROOT}}', root)}
     </div>
-  </section>
-
-  <section class="fc__section">
-    ${label('02', 'BRAND VALUES')}
-    <ol class="fc__values" data-enter="up">
-      <li><b>001</b><p>A raw electronic sound that takes concrete and brutalist architecture as its structural reference — mass, weight and load-bearing form translated into pressure and low end.</p></li>
-      <li><b>002</b><p>Club culture as nocturnal discipline. Rhythm is repetition, not ornament — a machined loop held long enough to become architecture in itself.</p></li>
-      <li><b>003</b><p>Automotive precision carried into design. Every surface is measured, every tolerance intentional; nothing is left to gesture or accident.</p></li>
-    </ol>
-  </section>
-
-  <section class="fc__section">
-    ${label('03', 'MARK CONSTRUCTION', 'DRAG TO ROTATE')}
-    <div class="fc__mark">
-      <div class="fc__viewer">
-        <model-viewer src="${root}models/fast-concept-isotype.glb" alt="Fast Concept emblem in 3D: six off-white facets and one red core" camera-controls disable-zoom disable-pan auto-rotate auto-rotate-delay="0" rotation-per-second="24deg" interaction-prompt="none" touch-action="pan-y" camera-orbit="25deg 78deg 135%" exposure="1.1" shadow-intensity="0" loading="lazy" reveal="auto">
-          <img slot="poster" src="${root}img/fc/grid.webp" width="1400" height="1400" alt="" loading="lazy">
-        </model-viewer>
-      </div>
-      <div class="fc__grid"><img src="${root}img/fc/grid.webp" width="1400" height="1400" alt="Emblem drawn on its measuring grid: six rings and eight radials" loading="lazy" decoding="async"></div>
-    </div>
-    <div class="fc__cols fc__cols--2" data-enter="up">
-      <p>The mark is built from six flat facets and one fixed red core, cut on a single measuring grid. Each plane is separated by a hairline seam; each angle is held to the same construction as the rings around it.</p>
-      <p>The proportion is fixed. The mark is never stretched, never respaced, and never redrawn — it is placed, at the size the grid allows.</p>
-    </div>
-  </section>
-
-  ${fcBoard(root, '05-anatomy', 2200, 1943, 'Anatomy of the Fast Concept emblem')}
-  ${fcBoard(root, '06-primary-logo', 2200, 1316, 'Fast Concept primary logo')}
-  ${fcBoard(root, '07-logo-system', 2200, 1545, 'Logo system — six permitted forms: primary, short form, emblem alone, seal, plate and campaign')}
-
-  <section class="fc__section">
-    ${label('06', 'COLOUR', 'RED LIVES ONLY IN THE CORE')}
-    <ul class="fc__palette" data-enter="up">
-      ${fcColours.map(([n, hex, use]) => `<li><button type="button" class="fc__swatch${hex === '#EC1812' ? ' fc__swatch--core' : ''}" style="--c:${hex}" data-copy="${hex}" aria-label="Copy ${n} ${hex}"><i></i></button><b>${n}</b><span>${hex} / ${use.toUpperCase()}</span></li>`).join('\n      ')}
-    </ul>
-  </section>
-
-  ${fcBoard(root, '09-typography', 2200, 1745, 'Typographic system: N-Gage for display, Neue Montreal for body, Geist Mono for technical annotation')}
-  ${fcBoard(root, '10-poster-series', 1400, 4542, 'Poster series — treatments of the emblem and wordmark on black, paper and red', 'fc__board--narrow')}
-  ${fcBoard(root, '11-applications', 1400, 2924, 'Applications: business card, statement panel, sleeve system FC001 to FC003, signage and merch', 'fc__board--narrow')}
-  ${fcBoard(root, '12-social-instagram', 2200, 2095, 'Instagram grid and stories with the rules for social use')}
-  ${fcBoard(root, '13-do-not', 2200, 714, 'Incorrect uses of the mark')}
-  ${fcBoard(root, '14-close', 2200, 1342, 'This is the representation of our mark. Founded by Marc Gruau — visual identity and guidelines, 2026.')}
-
+  </div>
+  <script>(function(){var w=document.currentScript.previousElementSibling;w.style.setProperty('--z',w.clientWidth/1400)})()</script>
   <nav class="project__nav" aria-label="Projects">
     <a href="${root}${prev.slug}/">← PREVIOUS</a>
     <a href="${root}${next.slug}/">NEXT →</a>

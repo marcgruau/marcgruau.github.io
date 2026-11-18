@@ -65,7 +65,7 @@ safe(() => {
 // In-view triggers (plain scroll check: content can never get stuck hidden)
 safe(() => {
   if (reduce) { document.querySelectorAll('[data-enter]').forEach((el) => el.classList.add('is-in')); return; }
-  const once = [...document.querySelectorAll('.card, .archive__item, .cols > div, .project__gallery img, .stats > div, .fc__board, .fc__headline, .fc__mark > div')];
+  const once = [...document.querySelectorAll('.card, .archive__item, .cols > div, .project__gallery img, .stats > div')];
   once.forEach((el) => el.classList.add('reveal'));
   const items = [
     ...once.map((el) => ({ el, at: 0.06, once: true })),
@@ -163,13 +163,27 @@ safe(() => {
   (document.fonts?.ready || Promise.resolve()).then(start, start); // sizes depend on the web font
 });
 
-// Copy a colour's hex on click (Fast Concept palette)
+// Fast Concept design: keep the 1400px layout scaled to the page width, and load its videos when near
 safe(() => {
-  document.querySelectorAll('[data-copy]').forEach((btn) => {
-    btn.addEventListener('click', async () => {
-      try { await navigator.clipboard.writeText(btn.dataset.copy); } catch (e) { return; }
-      btn.classList.add('is-copied');
-      setTimeout(() => btn.classList.remove('is-copied'), 1400);
+  const wrap = document.querySelector('[data-fcx]');
+  if (!wrap) return;
+  const fit = () => wrap.style.setProperty('--z', wrap.clientWidth / 1400);
+  fit();
+  addEventListener('resize', fit);
+  let vids = [...wrap.querySelectorAll('video[data-fc-video]')];
+  const load = () => {
+    vids = vids.filter((v) => {
+      const r = v.getBoundingClientRect();
+      if (r.top < innerHeight * 1.5 && r.bottom > -innerHeight * 0.5) {
+        v.src = v.dataset.src;
+        if (!reduce) v.play().catch(() => {}); else v.controls = true;
+        return false;
+      }
+      return true;
     });
-  });
+    if (!vids.length) { removeEventListener('scroll', load); clearInterval(timer); }
+  };
+  addEventListener('scroll', load, { passive: true });
+  const timer = setInterval(load, 700);
+  load();
 });
