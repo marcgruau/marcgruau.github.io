@@ -30,7 +30,7 @@ const picture = (root, im, { lazy = true, sizes = '100vw', cls = '' } = {}) =>
     lazy ? ' loading="lazy" decoding="async"' : ' fetchpriority="high"'
   }${cls ? ` class="${cls}"` : ''} sizes="${sizes}">`;
 
-function layout({ path, title, description = SITE.description, active = '', body, ogImage = SITE.ogImage, rootOverride, noindex = false }) {
+function layout({ path, title, description = SITE.description, active = '', body, ogImage = SITE.ogImage, rootOverride, noindex = false, physics = false }) {
   const depth = path === '' ? 0 : path.split('/').length;
   const root = rootOverride ?? (depth === 0 ? './' : '../'.repeat(depth));
   const canonical = `${SITE.url}/${path ? path + '/' : ''}`;
@@ -61,7 +61,7 @@ ${noindex ? '<meta name="robots" content="noindex">' : `<link rel="canonical" hr
 <link rel="preload" href="${root}fonts/NeueMontreal-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="${root}fonts/NeueMontreal-Medium.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${root}style.css">
-<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -83,7 +83,8 @@ ${body(root)}
   </ul>
   <time class="footer__clock" data-clock aria-hidden="true"></time>
 </footer>
-<script src="${root}main.js" defer></script>
+<script src="${root}vendor/lenis.min.js" defer></script>
+${physics ? `<script src="${root}vendor/matter.min.js" defer></script>\n` : ''}<script src="${root}main.js" defer></script>
 </body>
 </html>
 `;
@@ -144,10 +145,10 @@ const skillLinks = {
 const tags = ['MOTION', 'GRAPHIC DESIGNER', 'SOUND ENGINEER', 'BRAND DESIGNER', 'MARKETING STRATEGIST'];
 
 const home = (root) => `<section class="hero">
-  <div class="hero__tags" data-drag-area>
-    ${tags.map((t, i) => `<span class="tag tag--${i + 1}" data-drag>${t}${i === 0 ? '<i></i>' : ''}</span>`).join('\n    ')}
-    <a class="orb orb--1" href="#works" data-drag draggable="false" aria-label="Scroll to selected works"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15M5.5 12.5 12 19l6.5-6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
-    <span class="orb orb--2" data-drag aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></span>
+  <div class="hero__tags" data-physics>
+    ${tags.map((t, i) => `<div class="phys p-${i + 1}"><span class="tag${i % 2 ? ' tag--r' : ''}">${t}${i === 0 ? '<i></i>' : ''}</span></div>`).join('\n    ')}
+    <div class="phys p-o1"><a class="orb orb--arrow" href="#works" draggable="false" aria-label="Scroll to selected works"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15M5.5 12.5 12 19l6.5-6.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a></div>
+    <div class="phys p-o2"><span class="orb orb--star" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></span></div>
   </div>
   <h1 class="hero__name">MARC GRUAU</h1>
   <div class="hero__intro">
@@ -157,12 +158,12 @@ const home = (root) => `<section class="hero">
       <p class="muted">150+ clients &nbsp;·&nbsp; 77% conversion &nbsp;·&nbsp; +25% traffic</p>
     </div>
   </div>
-  <div class="player"><iframe title="Marc Gruau on Spotify" src="${SITE.spotify}" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>
+  <div class="player player--late"><iframe title="Marc Gruau on Spotify" src="${SITE.spotify}" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>
 </section>
 
 <section class="section" id="works">
   <div class="section__head">
-    <h2 class="accent">Selected Works</h2>
+    <h2 class="accent" data-fx="char" data-stagger="0.02">Selected Works</h2>
     <p class="muted">Selected work · 2018 — 2026</p>
     <a class="link" href="${root}works/">View all works</a>
   </div>
@@ -172,29 +173,29 @@ const home = (root) => `<section class="hero">
 </section>
 
 <section class="section split">
-  <h2 class="accent">Services</h2>
-  <ol class="services">
+  <h2 class="accent" data-fx="char" data-stagger="0.02">Services</h2>
+  <ol class="services" data-enter="left">
     ${services.map(([t, d], i) => `<li><span class="services__n">0${i + 1}</span><div><h3>${esc(t)}</h3><p>${esc(d)}</p></div></li>`).join('\n    ')}
   </ol>
 </section>
 
 <section class="section split">
-  <h2 class="accent">Experiences</h2>
-  <ol class="timeline">
-    ${experiences.map(([y, r, c]) => `<li><span class="timeline__y">${y}</span><div><h3>${esc(r)}</h3><p>${esc(c)}</p></div></li>`).join('\n    ')}
+  <h2 class="accent" data-fx="word" data-stagger="0.05">Experiences</h2>
+  <ol class="timeline" data-enter="up">
+    ${experiences.map(([y, r, c]) => `<li><span class="timeline__y">${y}</span><div><i class="timeline__dot" aria-hidden="true"></i><h3>${esc(r)}</h3><p>${esc(c)}</p></div></li>`).join('\n    ')}
   </ol>
 </section>
 
 <section class="section split">
-  <h2 class="accent">Skills &amp; Tools</h2>
-  <div class="skills">
+  <h2 class="accent" data-fx="char" data-stagger="0.015">Skills &amp; Tools</h2>
+  <div class="skills" data-enter="scale">
     ${skills.map(([g, list]) => `<div><h3>${g}</h3><ul>${list.map((s) => `<li>${skillLinks[s] ? `<a href="${skillLinks[s]}" target="_blank" rel="noopener">${s}</a>` : s}</li>`).join('')}</ul></div>`).join('\n    ')}
   </div>
 </section>
 
 <section class="section split">
-  <h2 class="accent">Credentials</h2>
-  <div class="creds">
+  <h2 class="accent" data-fx="element" data-stagger="0.02">Credentials</h2>
+  <div class="creds" data-enter="fade">
     ${credentials.map(([h, a, b]) => `<div><h3>${h}</h3><p>${esc(a)}</p><p class="muted">${esc(b)}</p></div>`).join('\n    ')}
   </div>
 </section>
@@ -279,8 +280,8 @@ const projectPage = (w, i) => (root) => {
   const next = works[(i + 1) % works.length];
   return `<article class="project">
   <header class="project__head">
-    <h1>${esc(w.title)}</h1>
-    <div><p class="eyebrow muted">OVERVIEW</p><p class="project__overview">${esc(w.overview)}</p></div>
+    <h1 aria-label="${esc(w.title)}">${w.title.split(' ').map((word, n) => `<span class="rise" aria-hidden="true"><span style="--i:${n}">${esc(word)}</span></span>`).join(' ')}</h1>
+    <div class="project__intro"><p class="eyebrow muted">OVERVIEW</p><p class="project__overview">${esc(w.overview)}</p></div>
   </header>
   <div class="project__hero">${picture(root, { ...w.thumb, alt: `${w.title} — ${w.category.toLowerCase()}` }, { lazy: false })}</div>
   <dl class="project__meta">
@@ -301,7 +302,7 @@ const projectPage = (w, i) => (root) => {
 
 /* ---------- Build ---------- */
 const pages = [
-  { path: '', title: 'Marc Gruau — Graphic Designer & Marketing Strategist', active: 'home', body: home, description: 'Designer specialized in visual systems, audio and motion. 8+ years in digital campaigns across fashion, beauty, electronics and automotive.' },
+  { path: '', title: 'Marc Gruau — Graphic Designer & Marketing Strategist', active: 'home', physics: true, body: home, description: 'Designer specialized in visual systems, audio and motion. 8+ years in digital campaigns across fashion, beauty, electronics and automotive.' },
   { path: 'works', title: 'Works — Marc Gruau', active: 'works', body: worksPage, description: 'Selected projects across CRM and lifecycle design, branding and visual identity, motion and cover design.' },
   { path: 'archive', title: 'Archive — Marc Gruau', active: 'archive', body: archivePage, description: 'Archived works: past experiments, personal photography and client projects from across the years.' },
   { path: 'about', title: 'About — Marc Gruau', active: 'about', body: aboutPage, description: 'Designer, marketing strategist and sound engineer based in Barcelona. Skills, tools, experience and credentials.' },
