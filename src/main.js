@@ -65,7 +65,7 @@ safe(() => {
 // In-view triggers (plain scroll check: content can never get stuck hidden)
 safe(() => {
   if (reduce) { document.querySelectorAll('[data-enter]').forEach((el) => el.classList.add('is-in')); return; }
-  const once = [...document.querySelectorAll('.card, .archive__item, .cols > div, .project__gallery img, .stats > div')];
+  const once = [...document.querySelectorAll('.card, .archive__item, .cols > div, .project__gallery img, .stats > div, .fc__board, .fc__headline, .fc__mark > div')];
   once.forEach((el) => el.classList.add('reveal'));
   const items = [
     ...once.map((el) => ({ el, at: 0.06, once: true })),
@@ -84,10 +84,10 @@ safe(() => {
       return true;
     });
   };
-  let queued = false;
-  const onScroll = () => { if (!queued) { queued = true; requestAnimationFrame(() => { queued = false; check(); }); } };
-  addEventListener('scroll', onScroll, { passive: true });
-  addEventListener('resize', onScroll);
+  // run directly on scroll (cheap: a few dozen rect reads) so it never depends on rAF being serviced
+  addEventListener('scroll', check, { passive: true });
+  addEventListener('resize', check);
+  setInterval(check, 600);
   addEventListener('load', check);
   addEventListener('pageshow', check);
   check();
@@ -161,4 +161,15 @@ safe(() => {
 
   const start = () => { build(); frame(); };
   (document.fonts?.ready || Promise.resolve()).then(start, start); // sizes depend on the web font
+});
+
+// Copy a colour's hex on click (Fast Concept palette)
+safe(() => {
+  document.querySelectorAll('[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(btn.dataset.copy); } catch (e) { return; }
+      btn.classList.add('is-copied');
+      setTimeout(() => btn.classList.remove('is-copied'), 1400);
+    });
+  });
 });
