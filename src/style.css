@@ -188,7 +188,6 @@ a { color: inherit; text-decoration: none; }
 .project__nav a:hover { color: var(--fg); }
 
 /* Fast Concept case study — Marc's Claude Design page, in the brand's own colours */
-@font-face { font-family: "N-Cage"; src: url("fonts/N-Gage.ttf") format("truetype"); font-weight: 100 900; font-display: swap; }
 @font-face { font-family: "Geist"; src: url("fonts/geist-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Geist"; src: url("fonts/geist-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "Geist"; src: url("fonts/geist-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
@@ -198,10 +197,14 @@ a { color: inherit; text-decoration: none; }
 .fc { --bg: #050608; --fg: #f1efea; --muted: #8a8b90; --line: #1f1f1f; --surface: #161722; --accent: #f1efea; background: var(--bg); color: var(--fg); }
 .fcx-wrap { margin: 0 calc(var(--pad) * -1); overflow: hidden; background: #050608; }
 .fcx { width: 1400px; zoom: var(--z, 1); letter-spacing: normal; line-height: normal; font-size: 16px;
-  --font-display: "N-Cage", "Arial Narrow", Impact, sans-serif; --font-body: "Geist", ui-sans-serif, system-ui, sans-serif; --font-mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  --font-display: "Arial Narrow", Impact, sans-serif; /* N-Cage itself is drawn as outlines (see tools/outline-display-font.py) */ --font-body: "Geist", ui-sans-serif, system-ui, sans-serif; --font-mono: "Geist Mono", ui-monospace, Menlo, monospace;
   --text-on-dark: #fff; --text-on-light: #050608; --text-annotation: #8a8b90; --fs-label: 13px; --lh-label: 1.1; --ls-label: .04em; }
 .fcx a { color: #f1efea; text-decoration: none; border-bottom: 1px solid #8a8b90; }
 .fcx img, .fcx video { max-width: none; }
+/* display-face text drawn as outlines: one inline SVG per word, sized in em so it still wraps and scales like text */
+.fcx .nc { display: inline-block; height: .642em; fill: currentColor; overflow: visible; vertical-align: baseline; flex: none; }
+.fcx .nc-s { display: inline-block; }
+.fcx .nc-t { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .fcx model-viewer { --poster-color: transparent; }
 .fcx model-viewer:active { cursor: grabbing; }
 @keyframes fcNucBlink { 0%, 49.9% { opacity: 0; } 50%, 100% { opacity: 1; } }
