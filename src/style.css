@@ -200,6 +200,43 @@ a { color: inherit; text-decoration: none; }
 .fcx model-viewer { --poster-color: transparent; }
 .fcx model-viewer:active { cursor: grabbing; }
 @keyframes fcNucBlink { 0%, 49.9% { opacity: 0; } 50%, 100% { opacity: 1; } }
+/* Phones: the artwork blocks stay scaled as one piece; the reading blocks are re-set at a
+   520px measure (zoom 1400/520) so body copy lands around 13px instead of 5px. */
+@media (max-width: 700px) {
+  .fcx [data-block="02-the-label"], .fcx [data-block="03-brand-values"], .fcx [data-block="3d-mark"],
+  .fcx [data-block="08-colour"], .fcx [data-block="09-typography"], .fcx [data-block="14-close"] { width: 520px; zoom: 2.6923; }
+  .fcx [data-block="02-the-label"] > section, .fcx [data-block="03-brand-values"] > section, .fcx [data-block="08-colour"] > section,
+  .fcx [data-block="09-typography"] > section { padding: 64px 28px !important; }
+  .fcx :is([data-block="02-the-label"], [data-block="03-brand-values"], [data-block="08-colour"]) > section > div:first-child > div:nth-child(2) > span { display: none !important; }
+  .fcx [data-block="02-the-label"] > section { gap: 36px !important; }
+  .fcx [data-block="02-the-label"] > section > div:nth-child(2) { gap: 20px !important; }
+  .fcx [data-block="02-the-label"] > section > div:nth-child(2) > div:first-child > div { height: 104px !important; }
+  .fcx [data-block="02-the-label"] > section > div:nth-child(2) > span { font-size: 31px !important; }
+  .fcx [data-block="02-the-label"] > section > div:nth-child(3) { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .fcx [data-block="03-brand-values"] > section > div:first-child { margin-bottom: 32px !important; }
+  .fcx [data-block="03-brand-values"] > section > div:nth-child(2) > div { grid-template-columns: 1fr !important; gap: 16px !important; padding: 28px 0 32px !important; }
+  .fcx [data-block="03-brand-values"] > section > div:nth-child(2) > div > div:first-child { font-size: 44px !important; }
+  .fcx [data-block="03-brand-values"] p { font-size: 18px !important; }
+  .fcx [data-block="3d-mark"] > section { grid-template-columns: 1fr !important; padding: 56px 28px 64px !important; gap: 32px !important; }
+  .fcx [data-block="3d-mark"] > section > div:first-child > div:nth-child(2) { font-size: 34px !important; }
+  .fcx [data-block="3d-mark"] > section > div:nth-child(2) { height: 460px !important; }
+  .fcx [data-block="08-colour"] > section > div:first-child { margin-bottom: 32px !important; }
+  .fcx [data-block="08-colour"] > section > div:nth-child(2) { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 28px 16px !important; }
+  .fcx [data-block="08-colour"] > section > div:nth-child(2) > div > div:first-child { height: 150px !important; }
+  .fcx [data-block="09-typography"] > section > div:first-child { margin-bottom: 32px !important; }
+  .fcx [data-block="09-typography"] > section > div:nth-child(n+2) { padding-bottom: 44px !important; }
+  .fcx [data-block="09-typography"] > section > div:nth-child(2) > div:first-child { font-size: 74px !important; }
+  .fcx [data-block="09-typography"] > section > div:nth-child(3) > div:first-child { font-size: 56px !important; }
+  .fcx [data-block="09-typography"] > section > div:nth-child(4) > div:first-child { font-size: 40px !important; }
+  .fcx [data-block="09-typography"] > section > div:nth-child(n+2) > div:nth-child(2) { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+  .fcx [data-block="09-typography"] > section > div:nth-child(n+2) > div:nth-child(2) > div:first-child { font-size: 18px !important; }
+  .fcx [data-block="14-close"] > section { padding: 72px 28px !important; gap: 36px !important; }
+  .fcx [data-block="14-close"] > section > div:first-child { font-size: 34px !important; }
+  .fcx [data-block="14-close"] > div:last-child { padding: 0 28px 56px !important; font-size: 11px !important; }
+  .fcx [data-block="02-the-label"] > div[style*="margin"], .fcx [data-block="03-brand-values"] > div[style*="margin"], .fcx [data-block="08-colour"] > div[style*="margin"],
+  .fcx [data-block="09-typography"] > div[style*="margin"], .fcx [data-block="3d-mark"] > div[style*="margin"] { margin: 0 28px !important; }
+}
+@media (max-width: 800px) { @keyframes lift { from { opacity: .2; transform: translateY(40px); } } }
 
 /* Footer */
 .footer { display: grid; grid-template-columns: 1fr 1fr auto; gap: var(--gap); padding: clamp(28px, 3vw, 44px) var(--pad); border-top: 1px solid var(--line); line-height: 1.9; }
@@ -272,4 +309,14 @@ a { color: inherit; text-decoration: none; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* Touch screens: a tap leaves :hover stuck, so the hover moves are for real pointers only */
+@media (hover: none) {
+  .card:hover { transform: none; background-color: transparent; box-shadow: none; }
+  .card:hover .card__media img, .fc__board:hover img { transform: none; }
+  .services li:hover > div, .services li:hover > .services__n, .timeline li:hover > div > h3, .timeline li:hover > div > p,
+  .skills li:hover, .tag:hover, .tag--r:hover, .orb--star:hover, .orb--arrow:hover, .btn:hover, .stats > div:hover { transform: none; }
+  .skills li:hover { background-color: transparent; }
+  .timeline li:hover .timeline__dot { transform: none; animation: dot 1.1s var(--spring) infinite alternate; }
 }
