@@ -202,3 +202,12 @@ safe(() => {
     target.addEventListener('keydown', used, { once: true });
   });
 });
+
+// Debug aid: ?seek=3.2 freezes the mark-construction animation at that second (used to check its frames)
+safe(() => {
+  const t = parseFloat(new URLSearchParams(location.search).get('seek'));
+  if (!(t >= 0)) return;
+  const st = document.createElement('style');
+  st.textContent = `.fcx .mc *{animation-delay:-${t}s!important;animation-play-state:paused!important}`;
+  document.head.append(st);
+});
