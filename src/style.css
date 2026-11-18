@@ -89,8 +89,13 @@ a { color: inherit; text-decoration: none; }
 .card:hover { transform: translateY(-6px); background-color: rgba(254, 132, 1, .08); box-shadow: 0 0 0 12px rgba(254, 132, 1, .08); }
 .card:active { transform: scale(.98); }
 .card__media { aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface); margin-bottom: 20px; }
-.card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
-.card:hover .card__media img { transform: scale(1.04); }
+.card__art { position: relative; width: 100%; height: 100%; transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
+.card__media img { width: 100%; height: 100%; object-fit: cover; }
+.card:hover .card__art { transform: scale(1.04); }
+/* Fast Concept cover: the red nucleus sits exactly over its slot in the artwork and blinks like a status LED */
+.card__led { position: absolute; left: 7.72%; top: 13.69%; width: 9.61%; height: 17.15%; background: #ec1812; border-radius: 3%; box-shadow: 0 0 24px 2px rgba(236, 24, 18, .55), 0 0 90px 10px rgba(236, 24, 18, .25); }
+@media (prefers-reduced-motion: no-preference) { .card__led { animation: led 1.6s steps(1, end) infinite; } }
+@keyframes led { 0%, 8% { opacity: 0; } 9%, 14% { opacity: 1; } 15%, 20% { opacity: 0; } 21%, 62% { opacity: 1; } 63%, 100% { opacity: 0; } }
 .card__row { display: flex; justify-content: space-between; gap: 16px; font-size: clamp(17px, 1.7vw, 24px); }
 .card__row h3 { font-size: inherit; }
 .card__row span, .card__cat { color: var(--muted); }
@@ -314,7 +319,7 @@ a { color: inherit; text-decoration: none; }
 /* Touch screens: a tap leaves :hover stuck, so the hover moves are for real pointers only */
 @media (hover: none) {
   .card:hover { transform: none; background-color: transparent; box-shadow: none; }
-  .card:hover .card__media img, .fc__board:hover img { transform: none; }
+  .card:hover .card__art { transform: none; }
   .services li:hover > div, .services li:hover > .services__n, .timeline li:hover > div > h3, .timeline li:hover > div > p,
   .skills li:hover, .tag:hover, .tag--r:hover, .orb--star:hover, .orb--arrow:hover, .btn:hover, .stats > div:hover { transform: none; }
   .skills li:hover { background-color: transparent; }

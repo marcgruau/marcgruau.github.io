@@ -92,7 +92,7 @@ ${physics ? `<script src="${root}vendor/matter.min.js" defer></script>\n` : ''}$
 }
 
 const card = (root, w, eager = false, h = 'h3') => `<a class="card" href="${root}${w.slug}/">
-  <div class="card__media">${picture(root, { ...w.thumb, alt: '' }, { lazy: !eager, sizes: '(min-width: 800px) 50vw, 100vw' })}</div>
+  <div class="card__media"><div class="card__art">${picture(root, { ...w.thumb, alt: '' }, { lazy: !eager, sizes: '(min-width: 800px) 50vw, 100vw' })}${w.slug === 'fast-concept' ? '<i class="card__led" aria-hidden="true"></i>' : ''}</div></div>
   <div class="card__row"><${h}>${esc(w.title)}</${h}><span>${esc(w.year)}</span></div>
   <p class="card__cat">${esc(w.category)}</p>
 </a>`;
